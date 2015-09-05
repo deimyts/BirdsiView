@@ -1,7 +1,9 @@
 applications:
+- services:
+  - [your app name]-cloudantNoSQLDB
 - disk_quota: 1024M
-  host: asdffd
-  name: asdffd
+  host: [your app name]
+  name: [your app name]
   path: .
   domain: mybluemix.net
   instances: 1

@@ -20,7 +20,9 @@ The Python starter application has files as below:
 	This file is required by the Python buildpack. Its presence indicates that the application is a created for this buildpack. It can be used to list extra python packages not included by the buildpack by default.
 
 *   .gitignore
+
 	Specify files/dirs that should be ignored by git
 
 *   .cfignore
+
 	Specify files/dirs that should be ignore by cloud foundry
