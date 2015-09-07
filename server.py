@@ -1,5 +1,8 @@
 import os
-from flask import Flask
+import time
+import cloudant
+from flask import Flask, jsonify
+import json
 
 # Read port selected by the cloud for our application
 PORT = int(os.getenv('VCAP_APP_PORT', 8000))
