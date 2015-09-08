@@ -1,5 +1,4 @@
 import os
-import time
 import cloudant
 from flask import Flask, jsonify
 import json
