@@ -1,7 +1,7 @@
 applications:
 - services:
   - [app_name]-cloudantNoSQLDB
-- disk_quota: 1024M
+  disk_quota: 1024M
   host: [app_name]
   name: [app_name]
   path: .
