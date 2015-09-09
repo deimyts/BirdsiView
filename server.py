@@ -1,6 +1,6 @@
 import os
 import cloudant
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort, request, make_response
 import json
 
 # Read port selected by the cloud for our application
