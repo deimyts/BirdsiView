@@ -23,35 +23,11 @@
         </div>
 
         <script type="text/javascript">
-          // function get_location() {
-          //   navigator.geolocation.getCurrentPosition(show_map);
-          // }
-
-          // function show_map(position) {
-          //   var latitude = position.coords.latitude;
-          //   var longitude = position.coords.longitude;
-          //   // let's show a map or do something interesting!
-          //   console.log('latitude: ', latitude);
-          //   console.log('longitude: ', longitude);
-          // }
-
-          // var map;
-
-          // function initMap() {
-          //   map = new google.maps.Map(document.getElementById('map'), {
-          //     center: {lat: latitude, lng: longitude },
-          //     zoom: 8
-          //   });
-          // }
-
-          // $( document ).ready(function() {
-          //   get_location();   
-          // });
-
+          
           function initMap() {
             var map = new google.maps.Map(document.getElementById('map'), {
               center: {lat: -34.397, lng: 150.644},
-              zoom: 6
+              zoom: 13
             });
             var infoWindow = new google.maps.InfoWindow({map: map});
 
@@ -63,6 +39,8 @@
                   lng: position.coords.longitude
                 };
 
+                console.log('position: ', pos);
+
                 infoWindow.setPosition(pos);
                 infoWindow.setContent('Location found.');
                 map.setCenter(pos);
@@ -73,6 +51,14 @@
               // Browser doesn't support Geolocation
               handleLocationError(false, infoWindow, map.getCenter());
             }
+
+            var myLatLng = {lat: 30.270525, lng: -97.736249};
+
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: 'Hello World!'
+              })
           }
 
           function handleLocationError(browserHasGeolocation, infoWindow, pos) {
@@ -82,6 +68,7 @@
                                   'Error: Your browser doesn\'t support geolocation.');
           }
           
+
         </script>
 
         <script async defer
