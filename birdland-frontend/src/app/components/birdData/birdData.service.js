@@ -19,12 +19,14 @@
 
     function getBirds() {
       
+      //may want to be sure that the api uses the location data to query the database, so you aren't getting all the birds at once!
+      
       return $http.get(apiHost)
         .then(getBirdsComplete)
         .catch(getBirdsFailed);
 
       function getBirdsComplete(response) {
-        return response.data;
+        return response.data.birds;
       }
 
       function getBirdsFailed(error) {
@@ -33,3 +35,21 @@
     }
   }
 })();
+
+// return {
+//         getAvengers: getAvengers
+//     };
+
+//     function getAvengers() {
+//         return $http.get('/api/maa')
+//             .then(getAvengersComplete)
+//             .catch(getAvengersFailed);
+
+//         function getAvengersComplete(response) {
+//             return response.data.results;
+//         }
+
+//         function getAvengersFailed(error) {
+//             logger.error('XHR Failed for getAvengers.' + error.data);
+//         }
+//     }

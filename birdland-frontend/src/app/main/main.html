@@ -21,9 +21,24 @@
 
   <!-- map -->
   <section class="mapbox">
+  <pre>
+    {{main.test}}
+    Birds: {{main.birds}}
+    <!-- <p ng-model="main.birds">{{main.birds}}</p> -->
+    <!-- <p ng-repeat="bird in main.birds">
+      {{bird.bird_species}}
+    </p> -->
+  </pre>
     <!-- map controls --> 
-    <div id="map" class="mapbox__map">
-    </div>
+    <map class="mapbox__map" center="current-location" zoom="13">
+        <!-- <info-window position="current-location" visible="true">
+          <span>Loation found using HTML5.</span>
+        </info-window> -->
+        <marker position="30.270525,-97.736249" title="Hello World!"></marker>
+        <marker position="{{main.test}}" title="Hello World!"></marker>
+    </map>
+    <!-- <div id="map" class="mapbox__map">
+    </div> -->
   
     <div class="mapbox__controls">
       
@@ -57,3 +72,15 @@
       </form> -->
       
       <!-- login/signup -->
+
+      
+
+<script type="text/javascript">
+  // console.log('map function: ', main.initMap);
+</script>
+
+<!--
+<script async defer
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmP9_IcqdVZEvLo8cu4tQ42JUCo6V6-5Y&callback=main.initMap">
+</script>
+-->
