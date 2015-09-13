@@ -10,7 +10,7 @@
 
     var apiHost = '../../assets/sample_data/reports.json';
     var getBirdsEndpoint = 'http://jeff-1234.mybluemix.net/api/v1/birds/reports'
-    var saveReportEndpoint = ' http://jeff-1234.mybluemix.net/api/v1/birds/report';
+    var saveReportEndpoint = 'http://jeff-1234.mybluemix.net/api/v1/birds/report';
     var helloEndpoint = 'http://jeff-1234.mybluemix.net/api/v1/birds/hello';
 
     var service = {

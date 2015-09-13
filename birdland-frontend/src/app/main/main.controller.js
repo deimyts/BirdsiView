@@ -24,14 +24,14 @@
     }
 
     vm.testReport = {
-      "bird_species": "swallow",
-      "datetime": "2015-09-12T21:56:00TZD",
-      "image": "",
-      "lat": "30.2500",
-      "long": "-97.7500",
       "reporter": "jeff.pape@gmail.com",
+      "bird_species": "owl",
+      "datetime": "2015-09-13T22:57:00TZD",
+      "lat": 30.7593452,
+      "long": -98.6750379,
+      "image": "",
       "sound": "",
-      "notes" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos consequatur vel aliquam, nulla ducimus repellat sequi at ad magni laborum quae iste a ipsam ratione accusantium explicabo harum beatae natus."
+      "notes": "on east side"
     }
 
     var styleArray = [ 
