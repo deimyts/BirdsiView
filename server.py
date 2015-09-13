@@ -24,11 +24,11 @@ account = cloudant.Account(username)
 login = account.login(username, password)
 assert login.status_code == 200
 
-os.chdir('static')
+os.chdir('birdland-frontend/dist')
 
 @app.route('/')
 def test_html():
-    return app.send_static_file("test.html")
+    return app.send_static_file("index.html")
 
 
 @app.route('/api/v1/birds/hello')
