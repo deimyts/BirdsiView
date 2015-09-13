@@ -23,6 +23,17 @@
       templateUrl: vm.detailsTemplate
     }
 
+    vm.testReport = {
+      "bird_species": "swallow",
+      "datetime": "2015-09-12T21:56:00TZD",
+      "image": "",
+      "lat": "30.2500",
+      "long": "-97.7500",
+      "reporter": "jeff.pape@gmail.com",
+      "sound": "",
+      "notes" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos consequatur vel aliquam, nulla ducimus repellat sequi at ad magni laborum quae iste a ipsam ratione accusantium explicabo harum beatae natus."
+    }
+
     var styleArray = [ 
       //any style array defined in the google documentation you linked
       {
@@ -52,16 +63,7 @@
     //do stuff
     activate();
 
-    var testReport = {
-      "bird_species": "swallow",
-      "datetime": "2015-09-12T21:56:00TZD",
-      "image": "",
-      "lat": "30.2500",
-      "long": "-97.7500",
-      "reporter": "jeff.pape@gmail.com",
-      "sound": "",
-      "notes" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos consequatur vel aliquam, nulla ducimus repellat sequi at ad magni laborum quae iste a ipsam ratione accusantium explicabo harum beatae natus."
-    }
+    
 
     function hello() {
       return birdData.getHello()
@@ -72,8 +74,8 @@
     }
     
     hello();
-    // birdData.saveReport(testReport);
-    saveReport(testReport);
+    // birdData.saveReport(vm.testReport);
+    saveReport(vm.testReport);
 
 
 
