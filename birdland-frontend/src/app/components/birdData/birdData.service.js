@@ -9,7 +9,9 @@
   function birdData($log, $http) {
 
     var apiHost = '../../assets/sample_data/reports.json';
+    var getBirdsEndpoint = 'http://jeff-1234.mybluemix.net/api/v1/birds/reports'
     var saveReportEndpoint = ' http://jeff-1234.mybluemix.net/api/v1/birds/report';
+    var helloEndpoint = 'http://jeff-1234.mybluemix.net/api/v1/birds/hello';
 
     var service = {
       apiHost: apiHost,
@@ -24,7 +26,7 @@
       
       //may want to be sure that the api uses the location data to query the database, so you aren't getting all the birds at once!
 
-      return $http.get(apiHost)
+      return $http.get(getBirdsEndpoint)
         .then(getBirdsComplete)
         .catch(getBirdsFailed);
 
@@ -47,7 +49,6 @@
     }
 
     function getHello() {
-      var helloEndpoint = 'http://jeff-1234.mybluemix.net/api/v1/birds/hello';
       return $http.get(helloEndpoint)
       .then(hiComplete)
       .catch(hiFailed);
