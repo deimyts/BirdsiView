@@ -1,6 +1,6 @@
 import os
 import cloudant
-from flask import Flask, jsonify, abort, request, make_response
+from flask import Flask, jsonify, abort, request, make_response, send_from_directory
 import json
 import datetime
 from datetime import datetime
@@ -30,14 +30,15 @@ os.chdir('static')
 print("current dir")
 print(os.path.dirname(os.path.realpath(__file__)))
 
+
 @app.route('/')
 def test_html():
     print("test html dir")
     print(os.path.dirname(os.path.realpath(__file__)))
-    resp = app.send_static_file("index.html")
-    print(resp)
+    response = app.send_static_file("index.html")
+    print(response)
 
-    return resp
+    return response
 
 
 @app.route('/api/v1/birds/hello')
