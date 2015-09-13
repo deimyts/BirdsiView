@@ -23,6 +23,17 @@
       templateUrl: vm.detailsTemplate
     }
 
+    vm.testReport = {
+      "bird_species": "swallow",
+      "datetime": "2015-09-12T21:56:00TZD",
+      "image": "",
+      "lat": "30.2500",
+      "long": "-97.7500",
+      "reporter": "jeff.pape@gmail.com",
+      "sound": "",
+      "notes" : "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos consequatur vel aliquam, nulla ducimus repellat sequi at ad magni laborum quae iste a ipsam ratione accusantium explicabo harum beatae natus."
+    }
+
     var styleArray = [ 
       //any style array defined in the google documentation you linked
       {
@@ -52,6 +63,19 @@
     //do stuff
     activate();
 
+    
+
+    function hello() {
+      return birdData.getHello()
+        .then(function(data) {
+          console.log('hello again: ', data);
+          return data;
+        });
+    }
+    
+    hello();
+    // birdData.saveReport(vm.testReport);
+    saveReport(vm.testReport);
 
 
 
@@ -85,6 +109,13 @@
           return vm.birds;
 
         });
+    }
+
+    function saveReport(report) {
+      vm.birds.push(report);
+      console.log('saving from controller');
+      birdData.saveReport(report);
+      // $scope.apply()
     }
 
     function showDetails() {
