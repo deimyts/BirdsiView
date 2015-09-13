@@ -20,13 +20,22 @@
     function getBirds() {
       
       //may want to be sure that the api uses the location data to query the database, so you aren't getting all the birds at once!
-      
+
       return $http.get(apiHost)
         .then(getBirdsComplete)
         .catch(getBirdsFailed);
 
       function getBirdsComplete(response) {
-        return response.data.birds;
+        var birds = response.data.birds;
+
+        for ( var i=0; i < birds.length; i++  ){
+          birds[i].id = birds[i]._id;
+          birds[i].coords = { latitude: birds[i].lat, longitude: birds[i].long }
+          console.log('birds[i]: ', birds[i].coords);
+
+        }
+
+        return birds;
       }
 
       function getBirdsFailed(error) {

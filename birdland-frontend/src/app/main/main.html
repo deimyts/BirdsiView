@@ -26,7 +26,40 @@
   
     <!-- map controls --> 
 
-    <ui-gmap-google-map center='map.center' zoom='map.zoom' class='mapbox__map'></ui-gmap-google-map>
+    <ui-gmap-google-map center='main.map.center' zoom='main.map.zoom' class='mapbox__map'>
+      <!-- <ui-gmap-markers
+                  models='birds'
+                  idKey='birds.id' 
+                  
+
+                  coords='birds.coords'
+                  
+                  >
+      </ui-gmap-markers> -->
+
+      <ui-gmap-marker 
+        ng-repeat="bird in main.birds"
+        coords="bird.coords" 
+        idkey="bird.id"
+        click="main.showDetails">
+
+        <!-- <ui-gmap-window
+                
+                show='true'
+                templateUrl='main.detailsTemplate'
+                templateParameter='bird'> 
+        </ui-gmap-window> -->
+        <ui-gmap-window
+          class="report-details"
+          show="false"
+          templateUrl='main.detailsTemplate'
+          templateParameter='bird'
+          closeClick="main.hideDetails"> 
+        </ui-gmap-window>
+
+      </ui-gmap-marker>
+
+    </ui-gmap-google-map>
     
     <!-- <div id="map" class="mapbox__map">
     </div> -->
@@ -64,7 +97,8 @@
       
       <!-- login/signup -->
       <pre class="debug" ng-click="main.showDetails()">
-        {{main.test}}
+        <p>{{main.test}}</p>
+        <p>{{main.position}}</p>
         <p ng-repeat="bird in main.birds">{{bird.bird_species}}</p>
         <!-- <p ng-model="main.birds">{{main.birds}}</p> -->
         <!-- <p ng-repeat="bird in main.birds">

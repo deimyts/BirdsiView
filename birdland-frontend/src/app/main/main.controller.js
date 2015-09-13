@@ -11,10 +11,43 @@
 
     // variables
     vm.birds = [];
-    // vm.initMap = initMap; 
+    // vm.currentLocation = {};
+    vm.position = {lat: 0, lng: 0};
     vm.test = 'Testing...';
     vm.showDetails = showDetails;
-    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+    vm.detailsTemplate = 'app/components/templates/bird-details.html';
+    $scope.models = [];
+    vm.windowOptions = {
+      show: false,
+      styles: styleArray,
+      templateUrl: vm.detailsTemplate
+    }
+
+    var styleArray = [ 
+      //any style array defined in the google documentation you linked
+      {
+        featureType: "all",
+        stylers: [
+          { saturation: -80 }
+        ]
+      },{
+        featureType: "infoWindow",
+        elementType: "geometry",
+        stylers: [
+          { hue: "#00ffee" },
+          { saturation: 50 }
+        ]
+      },{
+        featureType: "poi.business",
+        elementType: "labels",
+        stylers: [
+          { visibility: "off" }
+        ]
+      }
+    ];
+    
+    
+    
 
     //do stuff
     activate();
@@ -44,17 +77,58 @@
       return birdData.getBirds()
         .then(function(data){
           vm.birds = data;
+          $scope.marker = vm.birds[0];
+          // $scope.birds = vm.birds;
           console.log(data);
+          
+          mapBirds(vm.birds);
           return vm.birds;
+
         });
     }
 
     function showDetails() {
-      console.log('some details');
+      vm.windowOptions.visible = !vm.windowOptions.visible;
+    }
+
+    function hideDetails() {
+      vm.windowOptions.visible = false;
+    }
+
+    // Get user's location and load the map.
+    function getCurrentLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          var position = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude
+          };
+          $scope.$apply(function(){
+                  vm.position = position;
+                  vm.map = { center: { latitude: vm.position.lat, longitude: vm.position.lng }, zoom: 8 };
+                });
+        }, function() {
+          handleLocationError(true)
+        });
+      } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false)
+      }
+    }
+
+    function mapBirds(birds) {
+      console.log('mapping birds: ', birds);
+      // for(i=0; i++; i<birds.length) {
+      //   vm.marker = {
+
+      //   }  
+      // }
+      
     }
 
     uiGmapGoogleMapApi.then(function(maps) {
         console.log('google maps ready');
+        getCurrentLocation();
         });
 
     //map stuff
