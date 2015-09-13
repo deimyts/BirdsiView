@@ -12,7 +12,8 @@
 
     var service = {
       apiHost: apiHost,
-      getBirds: getBirds
+      getBirds: getBirds,
+      saveReport: saveReport
     };
 
     return service;
@@ -41,6 +42,11 @@
       function getBirdsFailed(error) {
         $log.error('XHR Failed for getBirds.\n' + angular.toJson(error.data, true));
       }
+    }
+
+    function saveReport(report) {
+      console.log('saving bird report');
+      return $http.post(report).then()
     }
   }
 })();
