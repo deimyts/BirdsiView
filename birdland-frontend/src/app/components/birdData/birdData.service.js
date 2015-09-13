@@ -46,7 +46,17 @@
 
     function saveReport(report) {
       console.log('saving bird report');
-      return $http.post(report).then()
+      return $http.post(report)
+        .then(saveReportComplete)
+        .catch(saveReportFailed);
+
+      function saveReportComplete(response) {
+        $log('Report Saved:', response);
+      }
+
+      function saveReportFailed(response) {
+        $log( 'Error: ', response);
+      }
     }
   }
 })();
