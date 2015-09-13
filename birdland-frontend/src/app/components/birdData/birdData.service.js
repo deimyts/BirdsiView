@@ -9,10 +9,12 @@
   function birdData($log, $http) {
 
     var apiHost = '../../assets/sample_data/reports.json';
+    var saveReportEndpoint = ' http://jeff-1234.mybluemix.net/api/v1/birds/report';
 
     var service = {
       apiHost: apiHost,
       getBirds: getBirds,
+      getHello: getHello,
       saveReport: saveReport
     };
 
@@ -44,18 +46,35 @@
       }
     }
 
+    function getHello() {
+      var helloEndpoint = 'http://jeff-1234.mybluemix.net/api/v1/birds/hello';
+      return $http.get(helloEndpoint)
+      .then(hiComplete)
+      .catch(hiFailed);
+
+      function hiComplete(response){
+        console.log('hi!: ', response);
+        return response.data;
+      };
+
+      function hiFailed(error) {
+        $log.error('XHR Failed for getHello.\n' + angular.toJson(error.data, true));
+      };
+    }
+
     function saveReport(report) {
       console.log('saving bird report');
-      return $http.post(report)
+
+      return $http.post(saveReportEndpoint, {msg: report})
         .then(saveReportComplete)
         .catch(saveReportFailed);
 
       function saveReportComplete(response) {
-        $log('Report Saved:', response);
+        console.log('Report Saved:', response);
       }
 
       function saveReportFailed(response) {
-        $log( 'Error: ', response);
+        console.log( 'Save failed. Error: ', response);
       }
     }
   }
