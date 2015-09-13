@@ -6,13 +6,15 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, birdData, $log) {
+  function MainController($scope, birdData, $log, uiGmapGoogleMapApi) {
     var vm = this;
 
     // variables
     vm.birds = [];
     // vm.initMap = initMap; 
     vm.test = 'Testing...';
+    vm.showDetails = showDetails;
+    $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
 
     //do stuff
     activate();
@@ -29,10 +31,12 @@
 
 
 
+
     //functions
     function activate() {
       return getBirds().then(function() {
         $log.info('Activated Birds!');
+        
       });
     }
 
@@ -44,6 +48,14 @@
           return vm.birds;
         });
     }
+
+    function showDetails() {
+      console.log('some details');
+    }
+
+    uiGmapGoogleMapApi.then(function(maps) {
+        console.log('google maps ready');
+        });
 
     //map stuff
 

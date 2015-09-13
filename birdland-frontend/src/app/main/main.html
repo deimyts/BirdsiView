@@ -25,13 +25,9 @@
   <section class="mapbox">
   
     <!-- map controls --> 
-    <map class="mapbox__map" center="current-location" zoom="10">
-        <!-- <info-window position="current-location" visible="true">
-          <span>Loation found using HTML5.</span>
-        </info-window> -->
-        <marker position="30.270525,-97.736249" title="Hello World!"></marker>
-        <marker ng-repeat="bird in main.birds" position="{{bird.lat}}, {{bird.long}}" title="Hello World!"></marker>
-    </map>
+
+    <ui-gmap-google-map center='map.center' zoom='map.zoom' class='mapbox__map'></ui-gmap-google-map>
+    
     <!-- <div id="map" class="mapbox__map">
     </div> -->
   
@@ -67,7 +63,7 @@
       </form> -->
       
       <!-- login/signup -->
-      <pre class="debug">
+      <pre class="debug" ng-click="main.showDetails()">
         {{main.test}}
         <p ng-repeat="bird in main.birds">{{bird.bird_species}}</p>
         <!-- <p ng-model="main.birds">{{main.birds}}</p> -->
